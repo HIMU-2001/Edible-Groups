@@ -1,12 +1,7 @@
-/**
-* Template Name: Append
-* Updated: Jun 07 2023 with Bootstrap v5.3.0
-* Template URL: https://bootstrapmade.com/append-bootstrap-website-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
+
 
 
   const select = (el, all = false) => {
@@ -260,3 +255,28 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', aosInit);
 
 });
+
+const name = document.getElementById("name");
+const subject = document.getElementById("subject");
+const email = document.getElementById("email");
+const msg = document.getElementById("msg");
+const submit = document.getElementsByClassName("form-content")[0];
+
+
+submit.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  Email.send({
+    SecureToken : "f093bdd8-b366-4780-ac72-2082176d8d4a",
+    To : 'sales@bbrl.co.in',
+    From : "bbrltask@gmail.com",
+    Subject : subject.value,
+    Body : "<b>Name</b> :  "+name.value+
+            "<br> <b>Email</b> :  "+email.value+
+            "<br><b>Message</b> :  "+msg.value
+});
+e.target.reset();
+document.querySelector(".contact .php-email-form .sent-message").style.display="block";
+setTimeout(()=>{
+  document.querySelector(".contact .php-email-form .sent-message").style.display="none";
+},2500);
+})
